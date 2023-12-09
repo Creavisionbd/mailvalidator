@@ -207,7 +207,7 @@ def main():
                 process_txt(input_file)
             else:
                 
-                df = process_csv(input_file)
+                df = process_xlsx(input_file)
                 st.success("Processing completed. Displaying results:")
                 st.dataframe(df)
 
