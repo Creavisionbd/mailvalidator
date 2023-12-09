@@ -1,6 +1,7 @@
 import csv
 from tempfile import NamedTemporaryFile
 import shutil
+from io import BytesIO
 import pandas as pd
 import source_code as sc
 from suggestion import suggest_email_domain
@@ -43,13 +44,15 @@ def process_csv(input_file):
     # Read the uploaded file as a DataFrame
     if input_file:
         if isinstance(input_file, str):  # For Streamlit sharing compatibility
-            with open(input_file, 'rb') as f:
+            file_data = BytesIO(input_file.read())
+            with open(file_data, 'rb') as f:
                 result = chardet.detect(f.read())
 
-            df = pd.read_csv(input_file, encoding=result['encoding'])
+            df = pd.read_csv(file_data, encoding=result['encoding'])
             # df = pd.read_csv(input_file,'rb')
         else:
-            with open(input_file, 'rb') as f:
+            file_data = BytesIO(input_file.read())
+            with open(file_data, 'rb') as f:
                 result = chardet.detect(f.read())
 
             df = pd.read_csv(input_file, encoding=result['encoding'])
