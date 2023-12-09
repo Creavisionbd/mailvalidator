@@ -3,5 +3,6 @@ dnspython
 requests
 streamlit
 streamlit-extras
+openpyxl
 jellyfish
 numpy
