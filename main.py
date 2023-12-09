@@ -43,9 +43,9 @@ def process_csv(input_file):
     # Read the uploaded file as a DataFrame
     if input_file:
         if isinstance(input_file, str):  # For Streamlit sharing compatibility
-            df = pd.read_csv(input_file,encoding='utf-8')
+            df = pd.read_csv(input_file,encoding='ISO-8859-1')
         else:
-            df = pd.read_csv(input_file,encoding='utf-8')
+            df = pd.read_csv(input_file,encoding='ISO-8859-1')
         
         # Create a list to store the results
         results = []
@@ -64,7 +64,7 @@ def process_csv(input_file):
         return pd.DataFrame(columns=['Email', 'Label'])
 
 def process_xlsx(input_file):
-    df = pd.read_excel(input_file,encoding='utf-8')
+    df = pd.read_excel(input_file,encoding='ISO-8859-1')
     results = []
 
     for index, row in df.iterrows():
