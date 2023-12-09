@@ -59,6 +59,7 @@ def process_csv(input_file):
             email = row[0].strip()
             label = label_email(email)
             results.append([email, label])
+            print(results)
 
         # Create a new DataFrame for results
         result_df = pd.DataFrame(results, columns=['Email', 'Label'])
