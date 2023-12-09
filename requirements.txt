@@ -4,5 +4,6 @@ requests
 streamlit
 streamlit-extras
 openpyxl
+openpyxl
 jellyfish
 numpy
