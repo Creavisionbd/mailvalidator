@@ -44,15 +44,15 @@ def process_csv(input_file):
     # Read the uploaded file as a DataFrame
     if input_file:
         if isinstance(input_file, str):  # For Streamlit sharing compatibility
-            file_data = BytesIO(input_file.read())
-            with open(BytesIO(file_data.getvalue()), 'rb') as f:
+            
+            with open(input_file, 'rb') as f:
                 result = chardet.detect(f.read())
 
             df = pd.read_csv(file_data, encoding=result['encoding'])
             # df = pd.read_csv(input_file,'rb')
         else:
             file_data = BytesIO(input_file.read())
-            with open(BytesIO(file_data.getvalue()), 'rb') as f:
+            with open(input_file, 'rb') as f:
                 result = chardet.detect(f.read())
 
             df = pd.read_csv(input_file, encoding=result['encoding'])
