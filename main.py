@@ -43,9 +43,9 @@ def process_csv(input_file):
     # Read the uploaded file as a DataFrame
     if input_file:
         if isinstance(input_file, str):  # For Streamlit sharing compatibility
-            df = pd.read_csv(input_file, header=None)
+            df = pd.read_csv(input_file, engine='openpyxl')
         else:
-            df = pd.read_csv(input_file, header=None)
+            df = pd.read_csv(input_file, engine='openpyxl')
         
         # Create a list to store the results
         results = []
