@@ -64,7 +64,7 @@ def process_csv(input_file):
         # Create a new DataFrame for results
         result_df = pd.DataFrame(results, columns=['Email', 'Label'])
         result_df.index = range(1, len(result_df) + 1)  # Starting index from 1
-        return df
+        return result_df
     else:
         return pd.DataFrame(columns=['Email', 'Label'])
 
