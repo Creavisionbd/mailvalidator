@@ -64,7 +64,7 @@ def process_csv(input_file):
         return pd.DataFrame(columns=['Email', 'Label'])
 
 def process_xlsx(input_file):
-    df = pd.read_excel(input_file)
+    df = pd.read_excel(input_file,'rb')
     results = []
 
     for index, row in df.iterrows():
