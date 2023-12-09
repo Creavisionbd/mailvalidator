@@ -206,8 +206,8 @@ def main():
             if input_file.type == 'text/plain':
                 process_txt(input_file)
             else:
-                file_data = BytesIO(input_file.read())
-                df = process_csv(file_data)
+                
+                df = process_csv(input_file)
                 st.success("Processing completed. Displaying results:")
                 st.dataframe(df)
 
