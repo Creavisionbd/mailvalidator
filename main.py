@@ -145,6 +145,7 @@ def main():
                                     for suggested_domain in suggested_domains:
                                         st.write(suggested_domain)
                                 else:
+                                    None
                                     # st.warning("No suggested domains found.")
                             else:
                                 # MX record validation
