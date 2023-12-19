@@ -122,81 +122,93 @@ def main():
         
         if st.button("Verify"):
             with st.spinner('Verifying...'):
-                
-                email=f"{username}@{domain}"
-                print(email)
+               
                 result = {}
-
-                # Syntax validation
-                result['syntaxValidation'] = sc.is_valid_email(email)
-
-                if result['syntaxValidation']:
-                    domain_part = email.split('@')[1] if '@' in email else ''
-
-                    if not domain_part:
-                        st.error("Invalid email format. Please enter a valid email address.")
-                    else:
-                        # Additional validation for the domain part
-                        if not sc.has_valid_mx_record(domain_part):
-                            st.warning("Not valid: MX record not found.")
-                            suggested_domains = suggest_email_domain(domain_part, emailDomains)
-                            if suggested_domains:
-                                st.info("Suggested Domains:")
-                                for suggested_domain in suggested_domains:
-                                    st.write(suggested_domain)
-                            else:
-                                st.warning("No suggested domains found.")
+                def guesscheck(email):
+                    # Syntax validation
+                    result['syntaxValidation'] = sc.is_valid_email(email)
+    
+                    if result['syntaxValidation']:
+                        domain_part = email.split('@')[1] if '@' in email else ''
+    
+                        if not domain_part:
+                            st.error("Invalid email format. Please enter a valid email address.")
                         else:
-                            # MX record validation
-                            result['MXRecord'] = sc.has_valid_mx_record(domain_part)
-
-                            # SMTP validation
-                            if result['MXRecord']:
-                                result['smtpConnection'] = sc.verify_email(email)
+                            # Additional validation for the domain part
+                            if not sc.has_valid_mx_record(domain_part):
+                                st.warning("Not valid: MX record not found.")
+                                suggested_domains = suggest_email_domain(domain_part, emailDomains)
+                                if suggested_domains:
+                                    st.info("Suggested Domains:")
+                                    for suggested_domain in suggested_domains:
+                                        st.write(suggested_domain)
+                                else:
+                                    st.warning("No suggested domains found.")
                             else:
-                                result['smtpConnection'] = False
-
-                            # Temporary domain check
-                            result['is Temporary'] = sc.is_disposable(domain_part)
-
-                            # Determine validity status and message
-                            is_valid = (
-                                result['syntaxValidation']
-                                and result['MXRecord']
-                                and result['smtpConnection']
-                                and not result['is Temporary']
-                            )
-
-                            st.markdown("**Result:**")
-
-                            # Display metric cards with reduced text size
-                            col1, col2, col3 = st.columns(3)
-                            col1.metric(label="Syntax", value=result['syntaxValidation'])
-                            col2.metric(label="MxRecord", value=result['MXRecord'])
-                            col3.metric(label="Is Temporary", value=result['is Temporary'])
-                            style_metric_cards()
-                            
-                            # Show SMTP connection status as a warning
-                            if not result['smtpConnection']:
-                                st.warning("SMTP connection not established.")
-                            
-                            # Show domain details in an expander
-                            with st.expander("See Domain Information"):
-                                try:
-                                    dm_info = whois.whois(domain_part)
-                                    st.write("Registrar:", dm_info.registrar)
-                                    st.write("Server:", dm_info.whois_server)
-                                    st.write("Country:", dm_info.country)
-                                except:
-                                    st.error("Domain information retrieval failed.")
-                            
-                            # Show validity message
-                            if is_valid:
-                                st.success(f"{email} is a Valid email")
-                            else:
-                                st.error(f"{email} is a Invalid email")
-                                if result['is Temporary']:
-                                    st.text("It is a disposable email")
+                                # MX record validation
+                                result['MXRecord'] = sc.has_valid_mx_record(domain_part)
+    
+                                # SMTP validation
+                                if result['MXRecord']:
+                                    result['smtpConnection'] = sc.verify_email(email)
+                                else:
+                                    result['smtpConnection'] = False
+    
+                                # Temporary domain check
+                                result['is Temporary'] = sc.is_disposable(domain_part)
+    
+                                # Determine validity status and message
+                                is_valid = (
+                                    result['syntaxValidation']
+                                    and result['MXRecord']
+                                    and result['smtpConnection']
+                                    and not result['is Temporary']
+                                )
+    
+                                st.markdown("**Result:**")
+    
+                                # Display metric cards with reduced text size
+                                col1, col2, col3 = st.columns(3)
+                                col1.metric(label="Syntax", value=result['syntaxValidation'])
+                                col2.metric(label="MxRecord", value=result['MXRecord'])
+                                col3.metric(label="Is Temporary", value=result['is Temporary'])
+                                style_metric_cards()
+                                
+                                # Show SMTP connection status as a warning
+                                if not result['smtpConnection']:
+                                    st.warning("SMTP connection not established.")
+                                
+                                # Show domain details in an expander
+                                with st.expander("See Domain Information"):
+                                    try:
+                                        dm_info = whois.whois(domain_part)
+                                        st.write("Registrar:", dm_info.registrar)
+                                        st.write("Server:", dm_info.whois_server)
+                                        st.write("Country:", dm_info.country)
+                                    except:
+                                        st.error("Domain information retrieval failed.")
+                                
+                                # Show validity message
+                                if is_valid:
+                                    st.success(f"{email} is a Valid email")
+                                else:
+                                    st.error(f"{email} is a Invalid email")
+                                    if result['is Temporary']:
+                                        st.text("It is a disposable email")
+         # Split the full name into first name and last name
+        emailarray=[]
+        names = full_name.split()
+        # Combine variations of the names
+        name_with_dot = ".".join(names).lower()
+        email1=f"{username}@{domain}"
+        emailarray.append(name_with_dot)
+        name_without_separator = "".join(names).lower()
+        email2=f"{username}@{domain}"
+        emailarray.append(email2)
+        for i in range(len(emailarray):
+            email=emailarray[i]
+            guesscheck(email)
+            print(email)
 
     with t2:
         # Bulk email processing
