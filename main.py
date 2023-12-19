@@ -117,7 +117,7 @@ def main():
 
         username = st.text_input("Enter an email address:")
         domain=st.text_input("Enter an domain address:")
-        domain=domain.replace("www.", "")
+        domain=domain.replace("www.", "","https://")
         
         
         if st.button("Verify"):
