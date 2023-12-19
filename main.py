@@ -196,7 +196,7 @@ def main():
                                     if result['is Temporary']:
                                         st.text("It is a disposable email")
          # Split the full name into first name and last name
-                emailarray=[]
+                emailarray=["hi"]
                 names = username.split()
                 # Combine variations of the names
                 name_with_dot = ".".join(names).lower()
