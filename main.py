@@ -197,13 +197,13 @@ def main():
                                         st.text("It is a disposable email")
          # Split the full name into first name and last name
             emailarray=[]
-            names = full_name.split()
+            names = username.split()
             # Combine variations of the names
             name_with_dot = ".".join(names).lower()
-            email1=f"{username}@{domain}"
+            email1=f"{names}@{domain}"
             emailarray.append(name_with_dot)
             name_without_separator = "".join(names).lower()
-            email2=f"{username}@{domain}"
+            email2=f"{names}@{domain}"
             emailarray.append(email2)
             for i in range(len(emailarray)):
                 email=emailarray[i]
