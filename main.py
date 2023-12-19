@@ -201,7 +201,7 @@ def main():
                 # Combine variations of the names
                 name_with_dot = ".".join(names).lower()
                 email1=f"{name_with_dot}@{domain}"
-                emailarray.append(name_with_dot)
+                emailarray.append(email1)
                 name_without_separator = "".join(names).lower()
                 email2=f"{name_without_separator}@{domain}"
                 emailarray.append(email2)
