@@ -117,11 +117,12 @@ def main():
 
         username = st.text_input("Enter an email address:")
         domain=st.text_input("Enter an domain address:")
-        domain.replace("www.", "")
-        email=f"{username}@{domain}"
+        
         
         if st.button("Verify"):
             with st.spinner('Verifying...'):
+                domain.replace("www.", "")
+                email=f"{username}@{domain}"
                 print(email)
                 result = {}
 
