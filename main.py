@@ -122,6 +122,7 @@ def main():
         
         if st.button("Verify"):
             with st.spinner('Verifying...'):
+                print(email)
                 result = {}
 
                 # Syntax validation
