@@ -192,6 +192,7 @@ def main():
                                             st.write("Country:", dm_info.country)
                                         except:
                                             st.error("Domain information retrieval failed.")
+                                st.write("Not Found:")
                                 
                                 # Show validity message
                                 if is_valid:
