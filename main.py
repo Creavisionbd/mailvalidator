@@ -183,14 +183,15 @@ def main():
                                 #     st.warning("SMTP connection not established.")
                                 
                                 # Show domain details in an expander
-                                with st.expander("See Domain Information"):
-                                    try:
-                                        dm_info = whois.whois(domain_part)
-                                        st.write("Registrar:", dm_info.registrar)
-                                        st.write("Server:", dm_info.whois_server)
-                                        st.write("Country:", dm_info.country)
-                                    except:
-                                        st.error("Domain information retrieval failed.")
+                                if is_valid:
+                                    with st.expander("See Domain Information"):
+                                        try:
+                                            dm_info = whois.whois(domain_part)
+                                            st.write("Registrar:", dm_info.registrar)
+                                            st.write("Server:", dm_info.whois_server)
+                                            st.write("Country:", dm_info.country)
+                                        except:
+                                            st.error("Domain information retrieval failed.")
                                 
                                 # Show validity message
                                 if is_valid:
@@ -213,7 +214,7 @@ def main():
                 emailarray.append(email3)
                 email4=f"{names[1]}@{domain}"
                 emailarray.append(email4)
-                st.write("Server:",email3)
+                
                 for i in range(len(emailarray)):
                     email=emailarray[i]
                     guesscheck(email)
