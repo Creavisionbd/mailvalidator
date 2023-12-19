@@ -209,7 +209,7 @@ def main():
                 emailarray.append(email3)
                 email4=f"{names[1]}@{domain}"
                 emailarray.append(email4)
-                st.write("Server:",emailarray)
+                st.write("Server:",email3)
                 for i in range(len(emailarray)):
                     email=emailarray[i]
                     guesscheck(email)
