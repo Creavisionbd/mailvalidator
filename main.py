@@ -138,14 +138,14 @@ def main():
                         else:
                             # Additional validation for the domain part
                             if not sc.has_valid_mx_record(domain_part):
-                                st.warning("Not valid: MX record not found.")
+                                # st.warning("Not valid: MX record not found.")
                                 suggested_domains = suggest_email_domain(domain_part, emailDomains)
                                 if suggested_domains:
                                     st.info("Suggested Domains:")
                                     for suggested_domain in suggested_domains:
                                         st.write(suggested_domain)
                                 else:
-                                    st.warning("No suggested domains found.")
+                                    # st.warning("No suggested domains found.")
                             else:
                                 # MX record validation
                                 result['MXRecord'] = sc.has_valid_mx_record(domain_part)
@@ -177,9 +177,9 @@ def main():
                                     col3.metric(label="Is Temporary", value=result['is Temporary'])
                                     style_metric_cards()
                                 
-                                # Show SMTP connection status as a warning
-                                if not result['smtpConnection']:
-                                    st.warning("SMTP connection not established.")
+                                # # Show SMTP connection status as a warning
+                                # if not result['smtpConnection']:
+                                #     st.warning("SMTP connection not established.")
                                 
                                 # Show domain details in an expander
                                 with st.expander("See Domain Information"):
