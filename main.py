@@ -205,6 +205,10 @@ def main():
                 name_without_separator = "".join(names).lower()
                 email2=f"{name_without_separator}@{domain}"
                 emailarray.append(email2)
+                email3=f"{names[0]}@{domain}"
+                emailarray.append(email3)
+                email4=f"{names[1]}@{domain}"
+                emailarray.append(email4)
                 st.write("Server:",emailarray)
                 for i in range(len(emailarray)):
                     email=emailarray[i]
