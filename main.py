@@ -205,6 +205,7 @@ def main():
             name_without_separator = "".join(names).lower()
             email2=f"{names}@{domain}"
             emailarray.append(email2)
+            st.write("Server:",emailarray)
             for i in range(len(emailarray)):
                 email=emailarray[i]
                 guesscheck(email)
