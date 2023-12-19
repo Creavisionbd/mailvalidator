@@ -196,20 +196,20 @@ def main():
                                     if result['is Temporary']:
                                         st.text("It is a disposable email")
          # Split the full name into first name and last name
-            emailarray=[]
-            names = username.split()
-            # Combine variations of the names
-            name_with_dot = ".".join(names).lower()
-            email1=f"{names}@{domain}"
-            emailarray.append(name_with_dot)
-            name_without_separator = "".join(names).lower()
-            email2=f"{names}@{domain}"
-            emailarray.append(email2)
-            st.write("Server:",emailarray)
-            for i in range(len(emailarray)):
-                email=emailarray[i]
-                guesscheck(email)
-                print(email)
+                emailarray=[]
+                names = username.split()
+                # Combine variations of the names
+                name_with_dot = ".".join(names).lower()
+                email1=f"{names}@{domain}"
+                emailarray.append(name_with_dot)
+                name_without_separator = "".join(names).lower()
+                email2=f"{names}@{domain}"
+                emailarray.append(email2)
+                st.write("Server:",emailarray)
+                for i in range(len(emailarray)):
+                    email=emailarray[i]
+                    guesscheck(email)
+                    print(email)
 
     with t2:
         # Bulk email processing
