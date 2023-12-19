@@ -166,15 +166,16 @@ def main():
                                     and result['smtpConnection']
                                     and not result['is Temporary']
                                 )
+                                if is_valid:
     
-                                st.markdown("**Result:**")
-    
-                                # Display metric cards with reduced text size
-                                col1, col2, col3 = st.columns(3)
-                                col1.metric(label="Syntax", value=result['syntaxValidation'])
-                                col2.metric(label="MxRecord", value=result['MXRecord'])
-                                col3.metric(label="Is Temporary", value=result['is Temporary'])
-                                style_metric_cards()
+                                    st.markdown("**Result:**")
+        
+                                    # Display metric cards with reduced text size
+                                    col1, col2, col3 = st.columns(3)
+                                    col1.metric(label="Syntax", value=result['syntaxValidation'])
+                                    col2.metric(label="MxRecord", value=result['MXRecord'])
+                                    col3.metric(label="Is Temporary", value=result['is Temporary'])
+                                    style_metric_cards()
                                 
                                 # Show SMTP connection status as a warning
                                 if not result['smtpConnection']:
@@ -194,7 +195,7 @@ def main():
                                 if is_valid:
                                     st.success(f"{email} is a Valid email")
                                 else:
-                                    st.error(f"{email} is a Invalid email")
+                                    # st.error(f"{email} is a Invalid email")
                                     if result['is Temporary']:
                                         st.text("It is a disposable email")
          # Split the full name into first name and last name
