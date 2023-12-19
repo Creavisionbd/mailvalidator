@@ -115,8 +115,10 @@ def main():
     with t1:
     # Single email verification
 
-        email = st.text_input("Enter an email address:")
+        username = st.text_input("Enter an email address:")
         domain=st.text_input("Enter an domain address:")
+        domain.replace("www.", "")
+        email=f"{username}@{domain}"
         
         if st.button("Verify"):
             with st.spinner('Verifying...'):
