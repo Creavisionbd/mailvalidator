@@ -200,10 +200,10 @@ def main():
                 names = username.split()
                 # Combine variations of the names
                 name_with_dot = ".".join(names).lower()
-                email1=f"{names}@{domain}"
+                email1=f"{name_with_dot}@{domain}"
                 emailarray.append(name_with_dot)
                 name_without_separator = "".join(names).lower()
-                email2=f"{names}@{domain}"
+                email2=f"{name_without_separator}@{domain}"
                 emailarray.append(email2)
                 st.write("Server:",emailarray)
                 for i in range(len(emailarray)):
