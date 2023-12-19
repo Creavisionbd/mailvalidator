@@ -119,6 +119,7 @@ def main():
         domain=st.text_input("Enter an domain address:")
         domain=domain.replace("www.", "")
         domain=domain.replace("https://", "")
+        domain=domain.replace("/", "")
         
         
         if st.button("Verify"):
